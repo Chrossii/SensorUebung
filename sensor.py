@@ -44,8 +44,19 @@ def load_data(filename: str) -> list[dict]:
         >>> print(daten[0]["temperatur"])
         19.2
     """
-    # TODO: Implementierung hier einfügen
-    pass
+    try:
+        with open(filename, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            data = []
+            for row in reader:
+                entry = dict(row)
+                for key in ("temperatur", "luftfeuchtigkeit", "co2"):
+                    if key in entry and entry[key] != "":
+                        entry[key] = float(entry[key])
+                data.append(entry)
+            return data
+    except (OSError, ValueError):
+        return []
 
 
 def calculate_average(values: list[float]) -> float:
@@ -63,8 +74,7 @@ def calculate_average(values: list[float]) -> float:
         >>> calculate_average([19.2, 21.4, 24.7])
         21.77
     """
-    # TODO: Implementierung hier einfügen
-    pass
+    return round(sum(values) / len(values), 2)
 
 
 def find_extremes(values: list[float]) -> tuple[float, float]:
@@ -80,8 +90,7 @@ def find_extremes(values: list[float]) -> tuple[float, float]:
         >>> find_extremes([19.2, 21.4, 24.7, 17.5])
         (17.5, 24.7)
     """
-    # TODO: Implementierung hier einfügen
-    pass
+    return (min(values), max(values))
 
 
 def count_above_threshold(values: list[float], threshold: float) -> int:
@@ -98,8 +107,7 @@ def count_above_threshold(values: list[float], threshold: float) -> int:
         >>> count_above_threshold([19.2, 27.1, 24.7, 33.2, 21.4], 25.0)
         2
     """
-    # TODO: Implementierung hier einfügen
-    pass
+    return sum(1 for value in values if value > threshold)
 
 
 # ──────────────────────────────────────────────────────────────
