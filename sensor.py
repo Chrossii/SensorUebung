@@ -19,6 +19,10 @@ Datenformat (eine Zeile aus messdaten.csv als dict):
 
 import csv
 
+##bs<dlvg<isdvls<dvöiush<dfluiv<sdv
+#GROOOOOOOOOOOOOOOOOOOOBER FEHLER
+#GRRRR Böse
+
 
 # ──────────────────────────────────────────────────────────────
 # PERSON A grober fehler
